@@ -116,3 +116,79 @@ class SecondProblem {
         }
     }
 }
+
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.Scanner;
+
+class frac {
+    private int numer, denumer;
+    
+    public int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }
+    
+    public frac() {
+        numer = 1;
+        denumer = 1;
+    }
+    
+    public frac(int x, int y) {
+        int __gcd = gcd(x, y);
+        numer = x / __gcd;
+        denumer = y / __gcd;
+    }
+    
+    // a/b + c/d = a * d + b * c / b* d
+    public frac add(frac f) {
+        int a = numer,
+            b = denumer,
+            c = f.numer,
+            d = f.denumer;
+        return new frac(a * d + b * c, b * d);
+    }
+    
+    public frac sub(frac f) {
+        int a = numer,
+            b = denumer,
+            c = f.numer,
+            d = f.denumer;
+        return new frac(a * d - b * c, b * d);
+    }
+    
+    public frac mul(frac f) {
+        int a = numer,
+            b = denumer,
+            c = f.numer,
+            d = f.denumer;
+        return new frac(a * c, b * d);
+    }
+    
+    public frac div(frac f) {
+        int a = numer,
+            b = denumer,
+            c = f.numer,
+            d = f.denumer;
+        return new frac(a * d, b * c);
+    }
+    
+    public void print() {
+        System.out.println(numer + " " + denumer);
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		frac a = new frac(5, 3);
+		frac b = new frac(9, 3);
+		frac res = a.sub(b);
+		
+		res.print();
+	}
+}
